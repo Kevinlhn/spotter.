@@ -10,7 +10,7 @@ import CoreData
 
 @main
 struct spotter_App: App {
-    let persistenceController = PersistenceController.shared
+    let persistenceController = Persistence.shared
 
     var body: some Scene {
         WindowGroup {
