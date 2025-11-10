@@ -1,241 +1,179 @@
 //
 //  WorkoutDetails.swift
-//  spotter.
-//
-//  Created by Kevin Hernandez-Nino on 11/8/25.
-//
-
-
-//
-//  WorkoutDetails.swift
 //  spotter
 //
-//  Created by Kevin Hernandez-Nino on 11/08/25.
+//  Created by Kevin Hernandez-Nino on 11/9/25.
 //
 
 import SwiftUI
 import CoreData
 
-
 struct WorkoutDetails: View {
-    let workout: WorkoutEntity
-    var onDismiss: () -> Void
-    @Environment(\.colorScheme) private var colorScheme
-    @Environment(\.managedObjectContext) private var context
+    @ObservedObject var workout: WorkoutEntity
+    var onDismiss: () -> Void   // ✅ added
 
-    @State private var showAddExercise = false
-    @State private var newExerciseName: String = ""
+    @Environment(\.managedObjectContext) private var context
+    @Environment(\.colorScheme) private var colorScheme
+
+    @State private var showExercisePicker = false
+    @State private var workoutName: String = ""
+    @State private var notes: String = ""
+
+    private var exercises: [ExerciseEntity] {
+        (workout.exercises as? Set<ExerciseEntity>)?
+            .sorted(by: { $0.createdAt ?? .now < $1.createdAt ?? .now }) ?? []
+    }
 
     var body: some View {
         ZStack {
+            SpotterBackground()
 
-            VStack(spacing: 20) {
-                // MARK: - Header
-                Text(workout.name.isEmpty ? "Workout" : workout.name)
-                    .font(.system(size: 30, weight: .heavy))
-                    .foregroundStyle(AppColors.bluePrimary)
+            VStack{
+                ScrollView {
+                    VStack{
+                        nameSection
+                        notesSection
+                        Divider().opacity(0.2)
 
-                // MARK: - Card Container
-                VStack(spacing: 20) {
-                    headerSection
-                    Divider().padding(.vertical, 4)
-                    exercisesSection
-                    Divider().padding(.vertical, 4)
-                    notesSection
-                    Divider().padding(.vertical, 4)
-                    footerButtons
-                }
-                .padding(.horizontal, 25)
-                .padding(.vertical, 30)
-                .background(.ultraThinMaterial)
-                .cornerRadius(40)
-                .shadow(color: .black.opacity(0.3), radius: 12, y: 6)
-                .frame(maxWidth: 500)
-                .transition(.scale.combined(with: .opacity))
-            }
-            .padding()
-
-            // MARK: - Add Exercise Overlay
-            if showAddExercise {
-                Rectangle()
-                    .fill(.ultraThinMaterial)
-                    .ignoresSafeArea()
-                    .onTapGesture { withAnimation(.spring()) { showAddExercise = false } }
-
-                VStack(spacing: 15) {
-                    Text("Add Exercise")
-                        .font(.headline)
-                        .foregroundStyle(AppColors.bluePrimary)
-
-                    TextField("Exercise Name", text: $newExerciseName)
-                        .textFieldStyle(.roundedBorder)
-                        .padding(.horizontal)
-
-                    HStack(spacing: 12) {
-                        Button("Cancel") {
-                            withAnimation(.spring()) { showAddExercise = false }
+                        if exercises.isEmpty {
+                            VStack(spacing: 8) {
+                                Text("No exercises yet")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                                Text("Add an exercise to start building your workout.")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                            .padding(.vertical, 60)
+                        } else {
+                            ForEach(exercises, id: \.id) { exercise in
+                                ExerciseRow(exercise: exercise)
+                            }
                         }
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.primary.opacity(0.1))
-                        .cornerRadius(12)
-
-                        Button("Add") {
-                            addExercise()
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(AppColors.bluePrimary)
-                        .cornerRadius(12)
-                        .foregroundColor(.white)
-                        .disabled(newExerciseName.isEmpty)
                     }
+                    .padding(.horizontal)
                 }
-                .padding()
-                .background(.ultraThinMaterial)
-                .cornerRadius(30)
-                .shadow(radius: 10)
-                .frame(maxWidth: 400)
-                .transition(.scale.combined(with: .opacity))
+                addExerciseButton
+                footerBar.padding()
             }
+        }
+        .sheet(isPresented: $showExercisePicker) {
+            ExercisePickerSheet(workout: workout)
+                .presentationDetents([.medium, .large])
+        }
+        .onAppear {
+            workoutName = workout.name
+            notes = workout.notes ?? ""
         }
     }
 
-    // MARK: - Header Stats
-    private var headerSection: some View {
-        VStack(spacing: 6) {
+    // MARK: - Header Bar
+    private var footerBar: some View {
+        HStack {
+            Button {
+                withAnimation(.spring()) { onDismiss() }   // ✅ uses closure
+            } label: {
+                HStack(spacing: 4) {
+                    Image(systemName: "chevron.left")
+                    Text("Close")
+                }
+                .font(.subheadline)
+                .tint(.primary)
+                .padding(.horizontal,20)
+                .padding(.vertical,10)
+                .background(Color.primary.opacity(0.25))
+                .cornerRadius(50)
+            }
+
+            Spacer()
+
             Text(workout.date.formatted(.dateTime.month().day().year()))
                 .font(.caption)
-                .foregroundStyle(.secondary)
+                .foregroundColor(.secondary)
 
-            if let exercises = workout.exercises as? Set<ExerciseEntity> {
-                Text("\(exercises.count) Exercises")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+            Spacer()
+
+            Button {
+                saveWorkout()
+                withAnimation(.spring()) { onDismiss() }  // ✅ closes after saving
+            } label: {
+                HStack(spacing: 6) {
+                    Image(systemName: "checkmark.circle.fill")
+                    Text("Save")
+                }
+                .font(.subheadline.bold())
+                .padding(.horizontal,20)
+                .padding(.vertical,10)
+                .background(AppColors.bluePrimary)
+                .foregroundColor(.white)
+                .cornerRadius(50)
+                .shadow(radius: 3, y: 2)
             }
+        }
+        .padding(5)
+        .background(.ultraThickMaterial)
+        .cornerRadius(50)
+        .shadow(color: .black.opacity(0.2), radius: 6, y: 3)
+    }
+
+    // MARK: - Name Section
+    private var nameSection: some View {
+        VStack(alignment: .center, spacing: 8) {
+            Text("Workout")
+                .font(.footnote)
+            TextField("", text: $workoutName)
+                .frame(minHeight: 30)
+                .padding(12)
+                .background(.ultraThinMaterial)
+                .cornerRadius(12)
         }
     }
 
-    // MARK: - Exercises Section
-    private var exercisesSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Text("Exercises")
-                    .font(.headline)
-                Spacer()
-                Button {
-                    withAnimation(.spring()) { showAddExercise = true }
-                } label: {
-                    Label("Add", systemImage: "plus.circle.fill")
-                        .font(.headline)
-                        .tint(AppColors.bluePrimary)
-                }
-            }
-
-            if let exercises = workout.exercises as? Set<ExerciseEntity>, !exercises.isEmpty {
-                ForEach(exercises.sorted(by: { $0.name < $1.name }), id: \.id) { exercise in
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text(exercise.name)
-                            .font(.subheadline)
-                            .foregroundStyle(AppColors.bluePrimary)
-
-                        if let sets = exercise.sets as? Set<WorkoutSetEntity>, !sets.isEmpty {
-                            ForEach(sets.sorted(by: { $0.timestamp ?? Date() < $1.timestamp ?? Date() }), id: \.id) { set in
-                                HStack {
-                                    Text("\(Int(set.reps)) reps × \(Int(set.weight)) lbs")
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                }
-                                .padding(6)
-                                .background(.thinMaterial)
-                                .cornerRadius(8)
-                            }
-                        } else {
-                            Text("No sets yet")
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    .padding(8)
-                    .background(.ultraThinMaterial)
-                    .cornerRadius(12)
-                    .shadow(radius: 2, y: 1)
-                }
-            } else {
-                Text("No exercises added yet.")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
-        }
-    }
-
-    // MARK: - Notes
+    // MARK: - Notes Section
     private var notesSection: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Notes")
+        VStack(alignment: .center, spacing: 8) {
+            TextField("Notes", text: $notes)
+                .frame(minHeight: 30)
+                .padding(12)
+                .background(.ultraThinMaterial)
+                .cornerRadius(12)
+                
+        }
+    }
+
+    // MARK: - Add Exercise Button
+    private var addExerciseButton: some View {
+        Button {
+            showExercisePicker = true
+        } label: {
+            Label("Add Exercise", systemImage: "plus.circle.fill")
                 .font(.headline)
-            if let notes = workout.notes, !notes.isEmpty {
-                Text(notes)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-            } else {
-                Text("No notes for this workout.")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(AppColors.bluePrimary)
+                .foregroundColor(.white)
+                .cornerRadius(14)
+                .shadow(radius: 4)
         }
+        .padding(.horizontal)
     }
 
-    // MARK: - Buttons
-    private var footerButtons: some View {
-        HStack(spacing: 12) {
-            Button("Close") {
-                withAnimation(.spring()) { onDismiss() }
-            }
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(Color.primary.opacity(0.1))
-            .cornerRadius(12)
-            .foregroundColor(.primary)
-        }
-    }
-
-    // MARK: - Add Exercise Logic
-    private func addExercise() {
-        let exercise = ExerciseEntity(context: context)
-        exercise.id = UUID()
-        exercise.name = newExerciseName
-        exercise.createdAt = Date()
-        exercise.isCustom = true
-        workout.addToExercises(exercise)
-
-        do {
-            try context.save()
-        } catch {
-            print("❌ Error saving exercise:", error.localizedDescription)
-        }
-
-        newExerciseName = ""
-        withAnimation(.spring()) { showAddExercise = false }
+    // MARK: - Save Logic
+    private func saveWorkout() {
+        workout.name = workoutName.isEmpty ? "Untitled Workout" : workoutName
+        workout.notes = notes
+        try? context.save()
     }
 }
 
 #Preview {
     let ctx = Persistence.preview.container.viewContext
-    let req: NSFetchRequest<WorkoutEntity> = WorkoutEntity.fetchRequest()
-    let workout = (try? ctx.fetch(req))?.first ?? {
-        let w = WorkoutEntity(context: ctx)
-        w.id = UUID()
-        w.name = "Push Day"
-        w.date = Date()
-        w.notes = "Chest and triceps session"
-        return w
-    }()
+    let workout = WorkoutEntity(context: ctx)
+    workout.id = UUID()
+    workout.name = "Push Day"
+    workout.date = Date()
 
-    return ZStack {
-        SpotterBackground()
-        WorkoutDetails(workout: workout, onDismiss: {})
-            .environment(\.managedObjectContext, ctx)
-    }
-    .preferredColorScheme(.dark)
+    return WorkoutDetails(workout: workout, onDismiss: {})
+        .environment(\.managedObjectContext, ctx)
+        .preferredColorScheme(.dark)
 }
