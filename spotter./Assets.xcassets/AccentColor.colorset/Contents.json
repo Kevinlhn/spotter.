@@ -1,11 +1,1 @@
-{
-  "colors" : [
-    {
-      "idiom" : "universal"
-    }
-  ],
-  "info" : {
-    "author" : "xcode",
-    "version" : 1
-  }
-}
+{"colors":[{"idiom":"universal","color":{"color-space":"srgb","components":{"red":"0x46","green":"0x64","blue":"0x7E","alpha":"1.000"}}},{"idiom":"universal","appearances":[{"appearance":"luminosity","value":"dark"}],"color":{"color-space":"srgb","components":{"red":"0x9D","green":"0xB4","blue":"0xC8","alpha":"1.000"}}}],"info":{"author":"xcode","version":1}}

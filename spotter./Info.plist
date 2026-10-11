@@ -6,5 +6,20 @@
 	<array>
 		<string>remote-notification</string>
 	</array>
+	<key>NSSupportsLiveActivities</key>
+	<true/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.kevinlhn.spotter.workout</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>spotter</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

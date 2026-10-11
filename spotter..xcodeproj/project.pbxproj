@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C01000000000000000000001 /* SpotterActivity.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C01000000000000000000002 /* SpotterActivity.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D02000000000000000000001 /* SpotterWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D02000000000000000000002 /* SpotterWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D02000000000000000000003 /* Shared/WatchWorkoutMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02000000000000000000004 /* Shared/WatchWorkoutMessage.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		B519EF972E86576C00FCF0EA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,12 +27,54 @@
 			remoteGlobalIDString = B519EF812E86576B00FCF0EA;
 			remoteInfo = spotter.;
 		};
+		C01000000000000000000003 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B519EF7A2E86576B00FCF0EA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C01000000000000000000004;
+			remoteInfo = SpotterActivity;
+		};
+		D02000000000000000000005 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B519EF7A2E86576B00FCF0EA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D02000000000000000000006;
+			remoteInfo = SpotterWatch;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C01000000000000000000005 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C01000000000000000000001 /* SpotterActivity.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D02000000000000000000007 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				D02000000000000000000001 /* SpotterWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B519EF822E86576B00FCF0EA /* spotter..app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spotter..app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B519EF962E86576C00FCF0EA /* spotter.Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = spotter.Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B519EFA02E86576C00FCF0EA /* spotter.UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = spotter.UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C01000000000000000000002 /* SpotterActivity.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SpotterActivity.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D02000000000000000000002 /* SpotterWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotterWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D02000000000000000000004 /* Shared/WatchWorkoutMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/WatchWorkoutMessage.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -36,6 +84,13 @@
 				Info.plist,
 			);
 			target = B519EF812E86576B00FCF0EA /* spotter. */;
+		};
+		C01000000000000000000006 /* Exceptions for "SpotterActivity" folder in "SpotterActivity" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = C01000000000000000000004 /* SpotterActivity */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -56,6 +111,24 @@
 		B519EFA32E86576C00FCF0EA /* spotter.UITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = spotter.UITests;
+			sourceTree = "<group>";
+		};
+		C01000000000000000000007 /* SpotterActivity */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C01000000000000000000006 /* Exceptions for "SpotterActivity" folder in "SpotterActivity" target */,
+			);
+			path = SpotterActivity;
+			sourceTree = "<group>";
+		};
+		C01000000000000000000008 /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		D02000000000000000000008 /* SpotterWatch */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = SpotterWatch;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -82,6 +155,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C0100000000000000000000A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0200000000000000000000A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -91,6 +178,10 @@
 				B519EF842E86576B00FCF0EA /* spotter. */,
 				B519EF992E86576C00FCF0EA /* spotter.Tests */,
 				B519EFA32E86576C00FCF0EA /* spotter.UITests */,
+				C01000000000000000000008 /* Shared */,
+				C01000000000000000000007 /* SpotterActivity */,
+				D02000000000000000000008 /* SpotterWatch */,
+				D02000000000000000000004 /* Shared/WatchWorkoutMessage.swift */,
 				B519EF832E86576B00FCF0EA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,6 +192,8 @@
 				B519EF822E86576B00FCF0EA /* spotter..app */,
 				B519EF962E86576C00FCF0EA /* spotter.Tests.xctest */,
 				B519EFA02E86576C00FCF0EA /* spotter.UITests.xctest */,
+				C01000000000000000000002 /* SpotterActivity.appex */,
+				D02000000000000000000002 /* SpotterWatch.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,13 +208,18 @@
 				B519EF7E2E86576B00FCF0EA /* Sources */,
 				B519EF7F2E86576B00FCF0EA /* Frameworks */,
 				B519EF802E86576B00FCF0EA /* Resources */,
+				C01000000000000000000005 /* Embed App Extensions */,
+				D02000000000000000000007 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C0100000000000000000000C /* PBXTargetDependency */,
+				D0200000000000000000000C /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				B519EF842E86576B00FCF0EA /* spotter. */,
+				C01000000000000000000008 /* Shared */,
 			);
 			name = spotter.;
 			packageProductDependencies = (
@@ -176,6 +274,49 @@
 			productReference = B519EFA02E86576C00FCF0EA /* spotter.UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		C01000000000000000000004 /* SpotterActivity */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0100000000000000000000D /* Build configuration list for PBXNativeTarget "SpotterActivity" */;
+			buildPhases = (
+				C01000000000000000000009 /* Sources */,
+				C0100000000000000000000A /* Frameworks */,
+				C0100000000000000000000B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				C01000000000000000000007 /* SpotterActivity */,
+				C01000000000000000000008 /* Shared */,
+			);
+			name = SpotterActivity;
+			packageProductDependencies = (
+			);
+			productName = SpotterActivity;
+			productReference = C01000000000000000000002 /* SpotterActivity.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		D02000000000000000000006 /* SpotterWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0200000000000000000000D /* Build configuration list for PBXNativeTarget "SpotterWatch" */;
+			buildPhases = (
+				D02000000000000000000009 /* Sources */,
+				D0200000000000000000000A /* Frameworks */,
+				D0200000000000000000000B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D02000000000000000000008 /* SpotterWatch */,
+			);
+			name = SpotterWatch;
+			productName = SpotterWatch;
+			productReference = D02000000000000000000002 /* SpotterWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -197,6 +338,9 @@
 						CreatedOnToolsVersion = 26.0;
 						TestTargetID = B519EF812E86576B00FCF0EA;
 					};
+					C01000000000000000000004 = {
+						CreatedOnToolsVersion = 26.0;
+					};
 				};
 			};
 			buildConfigurationList = B519EF7D2E86576B00FCF0EA /* Build configuration list for PBXProject "spotter." */;
@@ -213,6 +357,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				D02000000000000000000006 /* SpotterWatch */,
+				C01000000000000000000004 /* SpotterActivity */,
 				B519EF812E86576B00FCF0EA /* spotter. */,
 				B519EF952E86576C00FCF0EA /* spotter.Tests */,
 				B519EF9F2E86576C00FCF0EA /* spotter.UITests */,
@@ -236,6 +382,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B519EF9E2E86576C00FCF0EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0100000000000000000000B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0200000000000000000000B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -266,6 +426,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C01000000000000000000009 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D02000000000000000000009 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D02000000000000000000003 /* Shared/WatchWorkoutMessage.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -278,6 +453,16 @@
 			isa = PBXTargetDependency;
 			target = B519EF812E86576B00FCF0EA /* spotter. */;
 			targetProxy = B519EFA12E86576C00FCF0EA /* PBXContainerItemProxy */;
+		};
+		C0100000000000000000000C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C01000000000000000000004 /* SpotterActivity */;
+			targetProxy = C01000000000000000000003 /* PBXContainerItemProxy */;
+		};
+		D0200000000000000000000C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D02000000000000000000006 /* SpotterWatch */;
+			targetProxy = D02000000000000000000005 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -312,7 +497,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,4";
 			};
 			name = Debug;
 		};
@@ -346,7 +531,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,4";
 			};
 			name = Release;
 		};
@@ -557,6 +742,126 @@
 			};
 			name = Release;
 		};
+		C0100000000000000000000E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FU6KMW4SEE;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SpotterActivity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Spotter Workout";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kevinlhn.spotter-.activity";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SPOTTER_WIDGET";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C0100000000000000000000F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FU6KMW4SEE;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SpotterActivity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Spotter Workout";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kevinlhn.spotter-.activity";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SPOTTER_WIDGET";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D0200000000000000000000E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FU6KMW4SEE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = spotter.;
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.kevinlhn.spotter-";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kevinlhn.spotter-.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Debug;
+		};
+		D0200000000000000000000F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FU6KMW4SEE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = spotter.;
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.kevinlhn.spotter-";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kevinlhn.spotter-.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -592,6 +897,24 @@
 			buildConfigurations = (
 				B519EFB22E86576C00FCF0EA /* Debug */,
 				B519EFB32E86576C00FCF0EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0100000000000000000000D /* Build configuration list for PBXNativeTarget "SpotterActivity" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0100000000000000000000E /* Debug */,
+				C0100000000000000000000F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0200000000000000000000D /* Build configuration list for PBXNativeTarget "SpotterWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0200000000000000000000E /* Debug */,
+				D0200000000000000000000F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -9,11 +9,20 @@
         <relationship name="sets" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="WorkoutSetEntity" inverseName="exercise" inverseEntity="WorkoutSetEntity"/>
         <relationship name="workout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WorkoutEntity" inverseName="exercises" inverseEntity="WorkoutEntity"/>
     </entity>
+    <entity name="ExerciseTemplateEntity" representedClassName="ExerciseTemplateEntity" syncable="YES">
+        <attribute name="createdAt" attributeType="Date" defaultDateTimeInterval="786344580" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isCustom" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="NO"/>
+        <attribute name="isFavorite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <attribute name="primaryMuscle" optional="YES" attributeType="String" defaultValueString=""/>
+    </entity>
     <entity name="WorkoutEntity" representedClassName="WorkoutEntity" syncable="YES">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="date" attributeType="Date" defaultDateTimeInterval="786493080" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="String" defaultValueString="&quot;scheduled&quot;"/>
         <relationship name="exercises" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ExerciseEntity" inverseName="workout" inverseEntity="ExerciseEntity"/>
     </entity>
     <entity name="WorkoutSetEntity" representedClassName="WorkoutSetEntity" syncable="YES">

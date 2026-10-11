@@ -2,6 +2,14 @@
 //  ExerciseTemplateEntity.swift
 //  spotter.
 //
+//  Created by Kevin Hernandez-Nino on 12/1/25.
+//
+
+
+//
+//  ExerciseTemplateEntity.swift
+//  spotter.
+//
 //  Core Data entity representing an exercise in the user's library.
 //
 

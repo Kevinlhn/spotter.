@@ -22,3 +22,5 @@ extension WorkoutSetEntity {
     @NSManaged public var timestamp: Date?
     @NSManaged public var exercise: ExerciseEntity?
 }
+
+extension WorkoutSetEntity: Identifiable {}
