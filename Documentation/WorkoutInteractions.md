@@ -1,6 +1,6 @@
 # Interactive workouts
 
-The app and extension target iOS 26. `Shared/WorkoutActionIntent.swift` conforms to `LiveActivityIntent`, which iOS executes in the containing app process without bringing up the app UI. The extension compiles the intent's parameters and UI; the `SPOTTER_WIDGET` condition omits the app-only handler there.
+The app and extension target iOS 26. `Shared/LiveActivities/WorkoutActionIntent.swift` conforms to `LiveActivityIntent`, which iOS executes in the containing app process without bringing up the app UI. The extension compiles the intent's parameters and UI; the `SPOTTER_WIDGET` condition omits the app-only handler there.
 
 `WorkoutRuntime` coalesces foreground and background launches into one asynchronous database load and one `TrainingStore`. No App Group is needed because the extension never opens the database. Existing SQLite data remains at its original URL. V5 adds an optional `sessionData` attribute using inferred lightweight migration; old model versions remain bundled.
 

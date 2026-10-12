@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C01000000000000000000001 /* SpotterActivity.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C01000000000000000000002 /* SpotterActivity.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C01000000000000000000001 /* SpotterActivity.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C01000000000000000000002 /* SpotterActivity.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D02000000000000000000001 /* SpotterWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D02000000000000000000002 /* SpotterWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		D02000000000000000000003 /* Shared/WatchWorkoutMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02000000000000000000004 /* Shared/WatchWorkoutMessage.swift */; };
+		D02000000000000000000003 /* Shared/Watch/WatchWorkoutMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02000000000000000000004 /* Shared/Watch/WatchWorkoutMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,15 +44,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C01000000000000000000005 /* Embed App Extensions */ = {
+		C01000000000000000000005 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				C01000000000000000000001 /* SpotterActivity.appex in Embed App Extensions */,
+				C01000000000000000000001 /* SpotterActivity.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D02000000000000000000007 /* Embed Watch Content */ = {
@@ -74,51 +74,51 @@
 		B519EFA02E86576C00FCF0EA /* spotter.UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = spotter.UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C01000000000000000000002 /* SpotterActivity.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SpotterActivity.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D02000000000000000000002 /* SpotterWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotterWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D02000000000000000000004 /* Shared/WatchWorkoutMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/WatchWorkoutMessage.swift; sourceTree = SOURCE_ROOT; };
+		D02000000000000000000004 /* Shared/Watch/WatchWorkoutMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared/Watch/WatchWorkoutMessage.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		B519EFA82E86576C00FCF0EA /* Exceptions for "spotter." folder in "spotter." target */ = {
+		B519EFA82E86576C00FCF0EA /* Exceptions for "App" folder in "spotter." target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Configuration/Info.plist,
 			);
 			target = B519EF812E86576B00FCF0EA /* spotter. */;
 		};
-		C01000000000000000000006 /* Exceptions for "SpotterActivity" folder in "SpotterActivity" target */ = {
+		C01000000000000000000006 /* Exceptions for "Extensions/LiveActivities" folder in "SpotterActivity" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Configuration/Info.plist,
 			);
 			target = C01000000000000000000004 /* SpotterActivity */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		B519EF842E86576B00FCF0EA /* spotter. */ = {
+		B519EF842E86576B00FCF0EA /* App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				B519EFA82E86576C00FCF0EA /* Exceptions for "spotter." folder in "spotter." target */,
+				B519EFA82E86576C00FCF0EA /* Exceptions for "App" folder in "spotter." target */,
 			);
-			path = spotter.;
+			path = App;
 			sourceTree = "<group>";
 		};
-		B519EF992E86576C00FCF0EA /* spotter.Tests */ = {
+		B519EF992E86576C00FCF0EA /* Tests/Unit */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = spotter.Tests;
+			path = Tests/Unit;
 			sourceTree = "<group>";
 		};
-		B519EFA32E86576C00FCF0EA /* spotter.UITests */ = {
+		B519EFA32E86576C00FCF0EA /* Tests/UI */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = spotter.UITests;
+			path = Tests/UI;
 			sourceTree = "<group>";
 		};
-		C01000000000000000000007 /* SpotterActivity */ = {
+		C01000000000000000000007 /* Extensions/LiveActivities */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				C01000000000000000000006 /* Exceptions for "SpotterActivity" folder in "SpotterActivity" target */,
+				C01000000000000000000006 /* Exceptions for "Extensions/LiveActivities" folder in "SpotterActivity" target */,
 			);
-			path = SpotterActivity;
+			path = Extensions/LiveActivities;
 			sourceTree = "<group>";
 		};
 		C01000000000000000000008 /* Shared */ = {
@@ -126,9 +126,9 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		D02000000000000000000008 /* SpotterWatch */ = {
+		D02000000000000000000008 /* Extensions/Watch */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SpotterWatch;
+			path = Extensions/Watch;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -175,13 +175,13 @@
 		B519EF792E86576B00FCF0EA = {
 			isa = PBXGroup;
 			children = (
-				B519EF842E86576B00FCF0EA /* spotter. */,
-				B519EF992E86576C00FCF0EA /* spotter.Tests */,
-				B519EFA32E86576C00FCF0EA /* spotter.UITests */,
+				B519EF842E86576B00FCF0EA /* App */,
+				B519EF992E86576C00FCF0EA /* Tests/Unit */,
+				B519EFA32E86576C00FCF0EA /* Tests/UI */,
 				C01000000000000000000008 /* Shared */,
-				C01000000000000000000007 /* SpotterActivity */,
-				D02000000000000000000008 /* SpotterWatch */,
-				D02000000000000000000004 /* Shared/WatchWorkoutMessage.swift */,
+				C01000000000000000000007 /* Extensions/LiveActivities */,
+				D02000000000000000000008 /* Extensions/Watch */,
+				D02000000000000000000004 /* Shared/Watch/WatchWorkoutMessage.swift */,
 				B519EF832E86576B00FCF0EA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -208,7 +208,7 @@
 				B519EF7E2E86576B00FCF0EA /* Sources */,
 				B519EF7F2E86576B00FCF0EA /* Frameworks */,
 				B519EF802E86576B00FCF0EA /* Resources */,
-				C01000000000000000000005 /* Embed App Extensions */,
+				C01000000000000000000005 /* Embed Foundation Extensions */,
 				D02000000000000000000007 /* Embed Watch Content */,
 			);
 			buildRules = (
@@ -218,7 +218,7 @@
 				D0200000000000000000000C /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				B519EF842E86576B00FCF0EA /* spotter. */,
+				B519EF842E86576B00FCF0EA /* App */,
 				C01000000000000000000008 /* Shared */,
 			);
 			name = spotter.;
@@ -242,7 +242,7 @@
 				B519EF982E86576C00FCF0EA /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				B519EF992E86576C00FCF0EA /* spotter.Tests */,
+				B519EF992E86576C00FCF0EA /* Tests/Unit */,
 			);
 			name = spotter.Tests;
 			packageProductDependencies = (
@@ -265,7 +265,7 @@
 				B519EFA22E86576C00FCF0EA /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				B519EFA32E86576C00FCF0EA /* spotter.UITests */,
+				B519EFA32E86576C00FCF0EA /* Tests/UI */,
 			);
 			name = spotter.UITests;
 			packageProductDependencies = (
@@ -287,7 +287,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				C01000000000000000000007 /* SpotterActivity */,
+				C01000000000000000000007 /* Extensions/LiveActivities */,
 				C01000000000000000000008 /* Shared */,
 			);
 			name = SpotterActivity;
@@ -310,7 +310,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				D02000000000000000000008 /* SpotterWatch */,
+				D02000000000000000000008 /* Extensions/Watch */,
 			);
 			name = SpotterWatch;
 			productName = SpotterWatch;
@@ -325,7 +325,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2600;
-				LastUpgradeCheck = 2610;
+				LastUpgradeCheck = 2630;
 				TargetAttributes = {
 					B519EF812E86576B00FCF0EA = {
 						CreatedOnToolsVersion = 26.0;
@@ -437,7 +437,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D02000000000000000000003 /* Shared/WatchWorkoutMessage.swift in Sources */,
+				D02000000000000000000003 /* Shared/Watch/WatchWorkoutMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,13 +472,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = spotter./spotter_.entitlements;
+				CODE_SIGN_ENTITLEMENTS = App/Configuration/spotter_.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FU6KMW4SEE;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = spotter./Info.plist;
+				INFOPLIST_FILE = App/Configuration/Info.plist;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -506,13 +507,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = spotter./spotter_.entitlements;
+				CODE_SIGN_ENTITLEMENTS = App/Configuration/spotter.Release.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FU6KMW4SEE;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = spotter./Info.plist;
+				INFOPLIST_FILE = App/Configuration/Info.plist;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -751,7 +753,7 @@
 				DEVELOPMENT_TEAM = FU6KMW4SEE;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SpotterActivity/Info.plist;
+				INFOPLIST_FILE = Extensions/LiveActivities/Configuration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Spotter Workout";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -781,7 +783,7 @@
 				DEVELOPMENT_TEAM = FU6KMW4SEE;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SpotterActivity/Info.plist;
+				INFOPLIST_FILE = Extensions/LiveActivities/Configuration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Spotter Workout";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
